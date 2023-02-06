@@ -1,7 +1,9 @@
 import styles from "./PostCreate.module.css";
 import { useState } from "react";
+import { useBlog } from "./BlogContext";
 
-export function PostCreate({ createPost }) {
+export function PostCreate() {
+  const { createPost } = useBlog();
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

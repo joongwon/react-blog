@@ -1,6 +1,8 @@
 import styles from "./Post.module.css";
+import { useBlog } from "./BlogContext";
 
-export function Post({ post, deletePost }) {
+export function Post({ post }) {
+  const { deletePost } = useBlog();
   return (
     <div className={styles.post}>
       <article>
