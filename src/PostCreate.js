@@ -12,6 +12,7 @@ export function PostCreate({ createPost }) {
       onSubmit={(e) => {
         e.preventDefault();
         createPost(title, content);
+        setIsOpen(false);
       }}
     >
       <input
