@@ -1,11 +1,15 @@
-export function Post({ post }) {
+import styles from "./Post.module.css";
+
+export function Post({ post, deletePost }) {
   return (
-    <div>
+    <div className={styles.post}>
       <article>
         <h2>{post.title}</h2>
         <p>{post.content}</p>
       </article>
-      <button>삭제</button>
+      <div className={styles.buttonContainer}>
+        <button onClick={() => deletePost(post.id)}>삭제</button>
+      </div>
     </div>
   );
 }
