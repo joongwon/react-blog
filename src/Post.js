@@ -8,7 +8,12 @@ export function Post({ post, deletePost }) {
         <p>{post.content}</p>
       </article>
       <div className={styles.buttonContainer}>
-        <button onClick={() => deletePost(post.id)}>삭제</button>
+        <button
+          className={styles.deleteButton}
+          onClick={() => deletePost(post.id)}
+        >
+          삭제
+        </button>
       </div>
     </div>
   );

@@ -4,12 +4,22 @@ import { PostList } from "./PostList";
 import { PostCreate } from "./PostCreate";
 import { useState } from "react";
 
+function getSavedPosts() {
+  const savedPosts = localStorage.getItem("postList");
+  if (savedPosts) {
+    return JSON.parse(savedPosts);
+  }
+  return [];
+}
+
+const postListInit = getSavedPosts();
+
 function App() {
-  const [postList, setPostList] = useState([
-    { id: 1, title: "리액트", content: "리액트는 너무 재밌다!" },
-    { id: 2, title: "오늘의 영상", content: "NYC A-Train Sax Battle" },
-    { id: 3, title: "첫번째 글", content: "안녕하세요~~" },
-  ]);
+  const [postList, _setPostList] = useState(postListInit);
+  function setPostList(postList) {
+    localStorage.setItem("postList", JSON.stringify(postList));
+    _setPostList(postList);
+  }
   function deletePost(id) {
     setPostList(postList.filter((post) => post.id !== id));
   }
