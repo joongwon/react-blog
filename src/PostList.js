@@ -1,13 +1,7 @@
 import styles from "./PostList.module.css";
-import { PostType } from "./types";
 import { Post } from "./Post";
 
-type PostListProps = {
-  postList: PostType[];
-  deletePost: (id: number) => void;
-};
-
-export function PostList({ postList, deletePost }: PostListProps) {
+export function PostList({ postList, deletePost }) {
   return (
     <div className={styles.postList}>
       {postList.length === 0 && (

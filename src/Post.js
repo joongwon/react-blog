@@ -1,12 +1,6 @@
-import { PostType } from "./types";
 import styles from "./Post.module.css";
 
-type PostProps = {
-  post: PostType;
-  deletePost: (id: number) => void;
-};
-
-export function Post({ post, deletePost }: PostProps) {
+export function Post({ post, deletePost }) {
   return (
     <div className={styles.post}>
       <article>

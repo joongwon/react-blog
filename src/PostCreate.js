@@ -1,11 +1,7 @@
 import styles from "./PostCreate.module.css";
 import { useState } from "react";
 
-type PostCreateProps = {
-  createPost: (title: string, content: string) => void;
-};
-
-export function PostCreate({ createPost }: PostCreateProps) {
+export function PostCreate({ createPost }) {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
