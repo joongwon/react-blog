@@ -1,6 +1,10 @@
 import styles from "./Header.module.css";
 
-export function Header({ postCount }) {
+type HeaderProps = {
+  postCount: number;
+};
+
+export function Header({ postCount }: HeaderProps) {
   return (
     <header className={styles.header}>
       <h1>블로그</h1>

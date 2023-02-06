@@ -1,3 +1,4 @@
+import { PostType } from "./types";
 import styles from "./App.module.css";
 import { Header } from "./Header";
 import { PostList } from "./PostList";
@@ -15,15 +16,18 @@ function getSavedPosts() {
 const postListInit = getSavedPosts();
 
 function App() {
-  const [postList, _setPostList] = useState(postListInit);
-  function setPostList(postList) {
+  const [postList, _setPostList] = useState<PostType[]>(postListInit);
+
+  function setPostList(postList: PostType[]) {
     localStorage.setItem("postList", JSON.stringify(postList));
     _setPostList(postList);
   }
-  function deletePost(id) {
+
+  function deletePost(id: number) {
     setPostList(postList.filter((post) => post.id !== id));
   }
-  function createPost(title, content) {
+
+  function createPost(title: string, content: string) {
     const newPost = {
       id: Date.now(),
       title,
@@ -31,6 +35,7 @@ function App() {
     };
     setPostList([newPost, ...postList]);
   }
+
   return (
     <div className={styles.app}>
       <main>
