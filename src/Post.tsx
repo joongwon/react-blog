@@ -1,7 +1,11 @@
 import styles from "./Post.module.css";
-import { useBlog } from "./BlogContext";
+import { PostType, useBlog } from "./BlogContext";
 
-export function Post({ post }) {
+type PostProps = {
+  post: PostType;
+};
+
+export function Post({ post }: PostProps) {
   const { deletePost } = useBlog();
   return (
     <div className={styles.post}>
