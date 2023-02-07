@@ -11,7 +11,7 @@ export function Header() {
       <nav className="Header__nav">
         <Link to="/">소개</Link>
         <Link to="/post">글 목록</Link>
-        <Link to="/post/create">글쓰기</Link>
+        {loginUser && <Link to="/post/create">글쓰기</Link>}
         {loginUser && <button onClick={() => logout()}>로그아웃</button>}
         {!loginUser && <Link to="/login">로그인</Link>}
       </nav>
