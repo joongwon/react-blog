@@ -7,6 +7,7 @@ export type PostType = {
 };
 
 export type UserType = {
+  email: string;
   name: string;
 };
 
@@ -17,7 +18,7 @@ type BlogContextType = {
   createPost: (title: string, content: string) => void;
   deletePost: (id: number) => void;
   getPost: (id: number) => PostType | null;
-  login: (name: string, password: string) => void;
+  login: (email: string, password: string) => void;
   logout: () => void;
 };
 
@@ -69,9 +70,9 @@ export function BlogProvider({ children }: PropsWithChildren) {
     return postList.find((post) => post.id === id) ?? null;
   }
 
-  function login(name: string, password: string) {
-    if (name === "joongwon" && password === "1234") {
-      setLoginUser({ name });
+  function login(email: string, password: string) {
+    if (email === "freleefty@gmail.com" && password === "1234") {
+      setLoginUser({ email, name: "joongwon" });
     } else {
       throw new Error("로그인에 실패했습니다.");
     }

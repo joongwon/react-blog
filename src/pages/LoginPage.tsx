@@ -10,12 +10,12 @@ export function LoginPage() {
   return (
     <Formik
       initialValues={{
-        name: "",
+        email: "",
         password: "",
       }}
-      onSubmit={({ name, password }) => {
+      onSubmit={({ email, password }) => {
         try {
-          login(name, password);
+          login(email, password);
           navigate("/");
         } catch (e) {
           if (e instanceof Error) alert(e.message);
@@ -23,7 +23,7 @@ export function LoginPage() {
       }}
     >
       <Form className="LoginPage">
-        <Field name="name" type="text" placeholder="이름을 입력하세요" />
+        <Field name="email" type="email" placeholder="이메일을 입력하세요" />
         <Field
           name="password"
           type="password"
