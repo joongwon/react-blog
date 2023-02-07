@@ -1,6 +1,8 @@
 import "./PostView.css";
+import { useBlogContext } from "../contexts/BlogContext";
 
-export function PostView({ post, deletePost }) {
+export function PostView({ post }) {
+  const { deletePost } = useBlogContext();
   return (
     <div className="post">
       <article>

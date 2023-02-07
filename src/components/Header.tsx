@@ -1,6 +1,9 @@
 import "./Header.css";
+import { useBlogContext } from "../contexts/BlogContext";
 
-export function Header({ postCount }) {
+export function Header() {
+  const { postList } = useBlogContext();
+  const postCount = postList.length;
   return (
     <header className="Header">
       <h1>블로그</h1>

@@ -1,7 +1,9 @@
 import "./PostCreateForm.css";
 import { useState } from "react";
+import { useBlogContext } from "../contexts/BlogContext";
 
-export function PostCreateForm({ createPost }) {
+export function PostCreateForm() {
+  const { createPost } = useBlogContext();
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

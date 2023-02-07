@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
+import { BlogProvider } from "./contexts/BlogContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BlogProvider>
+      <App />
+    </BlogProvider>
   </React.StrictMode>
 );
