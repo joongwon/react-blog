@@ -1,0 +1,17 @@
+.RootLayout {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+.RootLayout__main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.RootLayout__top-button {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+}

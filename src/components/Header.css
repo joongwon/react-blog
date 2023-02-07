@@ -5,3 +5,13 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.Header__nav > a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.Header__nav > a:hover {
+  text-decoration: underline;
+}
