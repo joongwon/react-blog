@@ -17,8 +17,9 @@
 }
 
 .post__delete {
-  width: 40px;
-  height: 40px;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
   opacity: 0;
 }
 
