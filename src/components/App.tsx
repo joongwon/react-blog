@@ -1,8 +1,8 @@
 import "./App.css";
 import { useRef } from "react";
 import { Header } from "./Header";
-import { PostListView } from "./PostListView";
-import { PostCreateForm } from "./PostCreateForm";
+import { PostListView } from "../pages/PostListView";
+import { PostCreateForm } from "../pages/PostCreateForm";
 
 function App() {
   const topRef = useRef<HTMLDivElement>(null);

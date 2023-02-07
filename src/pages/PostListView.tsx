@@ -1,6 +1,6 @@
 import "./PostListView.css";
 import { useBlogContext } from "../contexts/BlogContext";
-import { PostView } from "./PostView";
+import { PostView } from "../components/PostView";
 
 export function PostListView() {
   const { postList } = useBlogContext();
