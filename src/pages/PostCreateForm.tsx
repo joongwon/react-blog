@@ -1,19 +1,19 @@
 import "./PostCreateForm.css";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useBlogContext } from "../contexts/BlogContext";
 import { Formik, Form, Field } from "formik";
 
 export function PostCreateForm() {
   const { createPost } = useBlogContext();
-  const [isOpen, setIsOpen] = useState(false);
-  return isOpen ? (
+  const navigate = useNavigate();
+  return (
     <Formik
       initialValues={{ title: "", content: "" }}
       onSubmit={({ title, content }) => {
         createPost(title, content);
-        setIsOpen(false);
+        navigate("/post");
       }}
-      onReset={() => setIsOpen(false)}
+      onReset={() => navigate("/post")}
     >
       <Form className="PostCreateForm">
         <Field name="title" type="text" placeholder="제목을 입력하세요" />
@@ -24,9 +24,5 @@ export function PostCreateForm() {
         </div>
       </Form>
     </Formik>
-  ) : (
-    <button className="PostCreateForm__open" onClick={() => setIsOpen(true)}>
-      글쓰기
-    </button>
   );
 }
