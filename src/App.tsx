@@ -1,18 +1,18 @@
 import "./App.css";
 import { Header } from "./Header";
-import { PostList } from "./PostList";
-import { PostCreate } from "./PostCreate";
+import { PostListView } from "./PostListView";
+import { PostCreateForm } from "./PostCreateForm";
 import { useState } from "react";
 
-function getSavedPosts() {
-  const savedPosts = localStorage.getItem("postList");
-  if (savedPosts) {
-    return JSON.parse(savedPosts);
+function getSavedPostList() {
+  const savedPostList = localStorage.getItem("postList");
+  if (savedPostList) {
+    return JSON.parse(savedPostList);
   }
   return [];
 }
 
-const postListInit = getSavedPosts();
+const postListInit = getSavedPostList();
 
 function App() {
   const [postList, _setPostList] = useState(postListInit);
@@ -32,11 +32,11 @@ function App() {
     setPostList([newPost, ...postList]);
   }
   return (
-    <div className="app">
+    <div className="App">
       <main>
         <Header postCount={postList.length} />
-        <PostCreate createPost={createPost} />
-        <PostList postList={postList} deletePost={deletePost} />
+        <PostCreateForm createPost={createPost} />
+        <PostListView postList={postList} deletePost={deletePost} />
       </main>
     </div>
   );

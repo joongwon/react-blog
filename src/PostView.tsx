@@ -1,6 +1,6 @@
-import "./Post.css";
+import "./PostView.css";
 
-export function Post({ post, deletePost }) {
+export function PostView({ post, deletePost }) {
   return (
     <div className="post">
       <article>

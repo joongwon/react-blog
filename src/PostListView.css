@@ -1,10 +1,10 @@
-.post-list {
+.PostListView {
   border: 1px solid grey;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.post-list__empty {
+.PostListView__empty {
   display: flex;
   justify-content: center;
   align-items: center;
