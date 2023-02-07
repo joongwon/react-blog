@@ -1,0 +1,15 @@
+.post-item {
+  display: block;
+  padding: 10px;
+  border-bottom: solid 1px grey;
+  color: black;
+  text-decoration: none;
+}
+
+.post-item:hover {
+  background-color: aliceblue;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}

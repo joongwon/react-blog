@@ -1,6 +1,6 @@
 import "./PostListView.css";
+import { PostItem } from "../components/PostItem";
 import { useBlogContext } from "../contexts/BlogContext";
-import { PostView } from "../components/PostView";
 
 export function PostListView() {
   const { postList } = useBlogContext();
@@ -10,7 +10,7 @@ export function PostListView() {
         <div className="PostListView__empty">게시글이 없습니다.</div>
       )}
       {postList.map((post) => (
-        <PostView key={post.id} post={post} />
+        <PostItem key={post.id} post={post} />
       ))}
     </div>
   );

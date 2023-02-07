@@ -10,6 +10,7 @@ type BlogContextType = {
   postList: PostType[];
   createPost: (title: string, content: string) => void;
   deletePost: (id: number) => void;
+  getPost: (id: number) => PostType | null;
 };
 
 const BlogContext = createContext<BlogContextType | null>(null);
@@ -43,8 +44,12 @@ export function BlogProvider({ children }: PropsWithChildren) {
     setPostList([newPost, ...postList]);
   }
 
+  function getPost(id: number) {
+    return postList.find((post) => post.id === id) ?? null;
+  }
+
   return (
-    <BlogContext.Provider value={{ postList, createPost, deletePost }}>
+    <BlogContext.Provider value={{ postList, createPost, deletePost, getPost }}>
       {children}
     </BlogContext.Provider>
   );

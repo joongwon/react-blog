@@ -1,11 +1,8 @@
 .post {
-  border-bottom: 1px solid grey;
+  border: 1px solid grey;
   display: flex;
   padding: 10px;
-}
-
-.post:last-child {
-  border-bottom: none;
+  margin-bottom: 20px;
 }
 
 .post article {
@@ -20,9 +17,4 @@
   border: none;
   background-color: unset;
   cursor: pointer;
-  opacity: 0;
-}
-
-.post:hover .post__delete {
-  opacity: 1;
 }
