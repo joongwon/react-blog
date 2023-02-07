@@ -1,4 +1,4 @@
-import styles from "./PostCreate.module.css";
+import "./PostCreate.css";
 import { useState } from "react";
 
 export function PostCreate({ createPost }) {
@@ -7,7 +7,7 @@ export function PostCreate({ createPost }) {
   const [content, setContent] = useState("");
   return isOpen ? (
     <form
-      className={styles.postCreate}
+      className="post-create"
       onReset={() => setIsOpen(false)}
       onSubmit={(e) => {
         e.preventDefault();
@@ -26,13 +26,13 @@ export function PostCreate({ createPost }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <div className={styles.buttonsContainer}>
+      <div className="post-create__buttons">
         <button type="submit">작성</button>
         <button type="reset">취소</button>
       </div>
     </form>
   ) : (
-    <button className={styles.openButton} onClick={() => setIsOpen(true)}>
+    <button className="post-create__open" onClick={() => setIsOpen(true)}>
       글쓰기
     </button>
   );

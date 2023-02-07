@@ -1,10 +1,10 @@
-.postList {
+.post-list {
   border: 1px solid grey;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.empty {
+.post-list__empty {
   display: flex;
   justify-content: center;
   align-items: center;

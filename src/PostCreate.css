@@ -1,31 +1,31 @@
-.postCreate {
+.post-create {
   display: flex;
   flex-direction: column;
 }
 
-.postCreate input,
-.postCreate textarea {
+.post-create input,
+.post-create textarea {
   padding: 10px;
   margin: 5px 0;
 }
 
-.postCreate textarea {
+.post-create textarea {
   height: 100px;
   resize: vertical;
 }
 
-.buttonsContainer {
+.post-create__buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.buttonsContainer button {
+.post-create__buttons button {
   margin-left: 10px;
   width: 100px;
   height: 30px;
 }
 
-.openButton {
+.post-create__open {
   width: 100%;
   height: 30px;
 }

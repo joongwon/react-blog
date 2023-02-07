@@ -1,4 +1,4 @@
-import styles from "./App.module.css";
+import "./App.css";
 import { Header } from "./Header";
 import { PostList } from "./PostList";
 import { PostCreate } from "./PostCreate";
@@ -32,7 +32,7 @@ function App() {
     setPostList([newPost, ...postList]);
   }
   return (
-    <div className={styles.app}>
+    <div className="app">
       <main>
         <Header postCount={postList.length} />
         <PostCreate createPost={createPost} />

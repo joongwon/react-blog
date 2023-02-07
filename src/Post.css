@@ -12,16 +12,16 @@
   flex: 1;
 }
 
-.buttonContainer {
+.post__buttons {
   margin-left: 10px;
 }
 
-.deleteButton {
+.post__delete {
   width: 40px;
   height: 40px;
   opacity: 0;
 }
 
-.post:hover .deleteButton {
+.post:hover .post__delete {
   opacity: 1;
 }
