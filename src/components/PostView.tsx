@@ -1,7 +1,10 @@
 import "./PostView.css";
-import { useBlogContext } from "../contexts/BlogContext";
+import { PostType, useBlogContext } from "../contexts/BlogContext";
 
-export function PostView({ post }) {
+type PostViewProps = {
+  post: PostType;
+};
+export function PostView({ post }: PostViewProps) {
   const { deletePost } = useBlogContext();
   return (
     <div className="post">

@@ -1,6 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
-const BlogContext = createContext(null);
+export type PostType = {
+  id: number;
+  title: string;
+  content: string;
+};
+
+type BlogContextType = {
+  postList: PostType[];
+  createPost: (title: string, content: string) => void;
+  deletePost: (id: number) => void;
+};
+
+const BlogContext = createContext<BlogContextType | null>(null);
 
 function getSavedPostList() {
   const savedPostList = localStorage.getItem("postList");
@@ -10,16 +22,19 @@ function getSavedPostList() {
   return [];
 }
 
-export const BlogProvider = ({ children }) => {
-  const [postList, _setPostList] = useState(getSavedPostList);
-  function setPostList(postList) {
+export function BlogProvider({ children }: PropsWithChildren) {
+  const [postList, _setPostList] = useState<PostType[]>(getSavedPostList);
+
+  function setPostList(postList: PostType[]) {
     localStorage.setItem("postList", JSON.stringify(postList));
     _setPostList(postList);
   }
-  function deletePost(id) {
+
+  function deletePost(id: number) {
     setPostList(postList.filter((post) => post.id !== id));
   }
-  function createPost(title, content) {
+
+  function createPost(title: string, content: string) {
     const newPost = {
       id: Date.now(),
       title,
@@ -33,7 +48,7 @@ export const BlogProvider = ({ children }) => {
       {children}
     </BlogContext.Provider>
   );
-};
+}
 
 export const useBlogContext = () => {
   const blog = useContext(BlogContext);
