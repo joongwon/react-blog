@@ -1,17 +1,25 @@
 import "./PostCreateForm.css";
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useBlogContext } from "../contexts/BlogContext";
 import { Formik, Form, Field } from "formik";
+import { createPost } from "../lib/api";
 
 export function PostCreateForm() {
-  const { createPost } = useBlogContext();
   const navigate = useNavigate();
+  const mutation = useMutation({
+    mutationFn: createPost,
+    onSuccess: (post) => {
+      navigate(`/post/${post.id}`);
+    },
+    onError: () => {
+      alert("저장에 실패했습니다.");
+    },
+  });
   return (
     <Formik
       initialValues={{ title: "", content: "" }}
       onSubmit={({ title, content }) => {
-        const post = createPost(title, content);
-        navigate(`/post/${post.id}`);
+        mutation.mutate({ title, content });
       }}
       onReset={() => navigate("/post")}
     >

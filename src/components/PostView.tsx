@@ -1,13 +1,23 @@
 import "./PostView.css";
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { PostType, useBlogContext } from "../contexts/BlogContext";
+import { PostType } from "../contexts/BlogContext";
+import { deletePost } from "../lib/api";
 
 type PostViewProps = {
   post: PostType;
 };
 export function PostView({ post }: PostViewProps) {
-  const { deletePost } = useBlogContext();
   const navigate = useNavigate();
+  const mutation = useMutation({
+    mutationFn: deletePost,
+    onSuccess: () => {
+      navigate("/post");
+    },
+    onError: () => {
+      alert("삭제에 실패했습니다.");
+    },
+  });
   return (
     <div className="PostView">
       <article>
@@ -18,8 +28,7 @@ export function PostView({ post }: PostViewProps) {
         <button
           className="PostView__delete"
           onClick={() => {
-            deletePost(post.id);
-            navigate("/post");
+            mutation.mutate(post.id);
           }}
         >
           삭제

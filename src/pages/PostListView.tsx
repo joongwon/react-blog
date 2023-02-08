@@ -1,9 +1,12 @@
 import "./PostListView.css";
+import { useQuery } from "react-query";
 import { PostItem } from "../components/PostItem";
-import { useBlogContext } from "../contexts/BlogContext";
+import { getPostList } from "../lib/api";
 
 export function PostListView() {
-  const { postList } = useBlogContext();
+  const query = useQuery("postList", () => getPostList());
+  const postList = query.data;
+  if (!postList) return <div>로딩중...</div>;
   return (
     <div className="PostListView">
       {postList.length === 0 && (

@@ -1,14 +1,17 @@
+import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { PostView } from "../components/PostView";
-import { useBlogContext } from "../contexts/BlogContext";
+import { getPost } from "../lib/api";
 import { NotFoundPage } from "./NotFoundPage";
 
 export function PostPage() {
   const { id } = useParams();
-  const { getPost } = useBlogContext();
-  const post = getPost(Number(id));
-  if (!post) {
+  const query = useQuery(["post", id], () => getPost(Number(id)));
+  const post = query.data;
+  if (query.isError) {
     return <NotFoundPage />;
+  } else if (!post) {
+    return <div>로딩중...</div>;
   } else {
     return <PostView post={post} />;
   }

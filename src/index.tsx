@@ -9,22 +9,26 @@ import { AboutPage } from "./pages/AboutPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PostPage } from "./pages/PostPage";
 import { RootLayout } from "./pages/RootLayout";
+import { QueryClientProvider, QueryClient } from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
+const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
-    <BlogProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RootLayout />}>
-            <Route index element={<AboutPage />} />
-            <Route path="/post" element={<PostListView />} />
-            <Route path="/post/create" element={<PostCreateForm />} />
-            <Route path="/post/:id" element={<PostPage />} />
-            <Route path="/*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </BlogProvider>
+    <QueryClientProvider client={queryClient}>
+      <BlogProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<RootLayout />}>
+              <Route index element={<AboutPage />} />
+              <Route path="/post" element={<PostListView />} />
+              <Route path="/post/create" element={<PostCreateForm />} />
+              <Route path="/post/:id" element={<PostPage />} />
+              <Route path="/*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </BlogProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
