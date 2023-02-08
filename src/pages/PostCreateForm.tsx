@@ -4,9 +4,8 @@ import { useBlogContext } from "../contexts/BlogContext";
 import { Formik, Form, Field } from "formik";
 
 export function PostCreateForm() {
-  const { createPost, loginUser } = useBlogContext();
+  const { createPost } = useBlogContext();
   const navigate = useNavigate();
-  if (!loginUser) return <div>로그인이 필요합니다.</div>;
   return (
     <Formik
       initialValues={{ title: "", content: "" }}

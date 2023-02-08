@@ -6,7 +6,7 @@ type PostViewProps = {
   post: PostType;
 };
 export function PostView({ post }: PostViewProps) {
-  const { deletePost, loginUser } = useBlogContext();
+  const { deletePost } = useBlogContext();
   const navigate = useNavigate();
   return (
     <div className="PostView">
@@ -15,17 +15,15 @@ export function PostView({ post }: PostViewProps) {
         <p>{post.content}</p>
       </article>
       <div className="PostView__buttons">
-        {loginUser && (
-          <button
-            className="PostView__delete"
-            onClick={() => {
-              deletePost(post.id);
-              navigate("/post");
-            }}
-          >
-            삭제
-          </button>
-        )}
+        <button
+          className="PostView__delete"
+          onClick={() => {
+            deletePost(post.id);
+            navigate("/post");
+          }}
+        >
+          삭제
+        </button>
       </div>
     </div>
   );
