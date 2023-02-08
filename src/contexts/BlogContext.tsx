@@ -6,20 +6,11 @@ export type PostType = {
   content: string;
 };
 
-export type UserType = {
-  email: string;
-  name: string;
-};
-
 type BlogContextType = {
   postList: PostType[];
-  loginUser: UserType | null;
-
   createPost: (title: string, content: string) => void;
   deletePost: (id: number) => void;
   getPost: (id: number) => PostType | null;
-  login: (email: string, password: string) => void;
-  logout: () => void;
 };
 
 const BlogContext = createContext<BlogContextType | null>(null);
@@ -32,25 +23,11 @@ function getSavedPostList() {
   return [];
 }
 
-function getLoginUser() {
-  const savedLoginUser = localStorage.getItem("loginUser");
-  if (savedLoginUser) {
-    return JSON.parse(savedLoginUser);
-  }
-  return null;
-}
-
 export function BlogProvider({ children }: PropsWithChildren) {
   const [postList, _setPostList] = useState<PostType[]>(getSavedPostList);
   function setPostList(postList: PostType[]) {
     localStorage.setItem("postList", JSON.stringify(postList));
     _setPostList(postList);
-  }
-
-  const [loginUser, _setLoginUser] = useState<UserType | null>(getLoginUser);
-  function setLoginUser(user: UserType | null) {
-    localStorage.setItem("loginUser", JSON.stringify(user));
-    _setLoginUser(user);
   }
 
   function deletePost(id: number) {
@@ -70,28 +47,13 @@ export function BlogProvider({ children }: PropsWithChildren) {
     return postList.find((post) => post.id === id) ?? null;
   }
 
-  function login(email: string, password: string) {
-    if (email === "freleefty@gmail.com" && password === "1234") {
-      setLoginUser({ email, name: "joongwon" });
-    } else {
-      throw new Error("로그인에 실패했습니다.");
-    }
-  }
-
-  function logout() {
-    setLoginUser(null);
-  }
-
   return (
     <BlogContext.Provider
       value={{
         postList,
-        loginUser,
         createPost,
         deletePost,
         getPost,
-        login,
-        logout,
       }}
     >
       {children}
