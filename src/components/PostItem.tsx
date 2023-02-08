@@ -7,7 +7,7 @@ type PostItemProps = {
 };
 export function PostItem({ post }: PostItemProps) {
   return (
-    <Link className="post-item" to={`/post/${post.id}`}>
+    <Link className="PostItem" to={`/post/${post.id}`}>
       {post.title}
     </Link>
   );

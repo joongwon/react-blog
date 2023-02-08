@@ -7,9 +7,6 @@ export function PostPage() {
   const { id } = useParams();
   const { getPost } = useBlogContext();
   const post = getPost(Number(id));
-  if (!post) {
-    return <NotFoundPage />;
-  } else {
-    return <PostView post={post} />;
-  }
+  if (!post) return <NotFoundPage />;
+  return <PostView post={post} />;
 }

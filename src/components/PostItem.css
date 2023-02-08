@@ -1,4 +1,4 @@
-.post-item {
+.PostItem {
   display: block;
   padding: 10px;
   border-bottom: solid 1px grey;
@@ -6,10 +6,10 @@
   text-decoration: none;
 }
 
-.post-item:hover {
+.PostItem:hover {
   background-color: aliceblue;
 }
 
-.post-item:last-child {
+.PostItem:last-child {
   border-bottom: none;
 }
