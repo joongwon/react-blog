@@ -1,0 +1,12 @@
+.RegisterPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.RegisterPage input {
+  margin-bottom: 10px;
+}

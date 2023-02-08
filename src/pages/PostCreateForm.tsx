@@ -2,10 +2,12 @@ import "./PostCreateForm.css";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
+import { useBlogContext } from "../contexts/BlogContext";
 import { createPost } from "../lib/api";
 
 export function PostCreateForm() {
   const navigate = useNavigate();
+  const { loginInfo } = useBlogContext();
   const mutation = useMutation({
     mutationFn: createPost,
     onSuccess: (post) => {
@@ -15,11 +17,12 @@ export function PostCreateForm() {
       alert("저장에 실패했습니다.");
     },
   });
+  if (!loginInfo) return <div>로그인이 필요합니다.</div>;
   return (
     <Formik
       initialValues={{ title: "", content: "" }}
       onSubmit={({ title, content }) => {
-        mutation.mutate({ title, content });
+        mutation.mutate({ title, content, token: loginInfo?.token });
       }}
       onReset={() => navigate("/post")}
     >

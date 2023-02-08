@@ -4,57 +4,34 @@ export type PostType = {
   id: number;
   title: string;
   content: string;
+  author: UserType;
+};
+
+export type UserType = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+export type LoginInfoType = {
+  user: UserType;
+  token: string;
 };
 
 type BlogContextType = {
-  postList: PostType[];
-  createPost: (title: string, content: string) => PostType;
-  deletePost: (id: number) => void;
-  getPost: (id: number) => PostType | null;
+  loginInfo: LoginInfoType | null;
+  setLoginInfo: (loginInfo: LoginInfoType | null) => void;
 };
 
 const BlogContext = createContext<BlogContextType | null>(null);
 
-function getSavedPostList() {
-  const savedPostList = localStorage.getItem("postList");
-  if (savedPostList) {
-    return JSON.parse(savedPostList);
-  }
-  return [];
-}
-
 export function BlogProvider({ children }: PropsWithChildren) {
-  const [postList, _setPostList] = useState<PostType[]>(getSavedPostList);
-  function setPostList(postList: PostType[]) {
-    localStorage.setItem("postList", JSON.stringify(postList));
-    _setPostList(postList);
-  }
-
-  function deletePost(id: number) {
-    setPostList(postList.filter((post) => post.id !== id));
-  }
-
-  function createPost(title: string, content: string) {
-    const newPost = {
-      id: Date.now(),
-      title,
-      content,
-    };
-    setPostList([newPost, ...postList]);
-    return newPost;
-  }
-
-  function getPost(id: number) {
-    return postList.find((post) => post.id === id) ?? null;
-  }
-
+  const [loginInfo, setLoginInfo] = useState<LoginInfoType | null>(null);
   return (
     <BlogContext.Provider
       value={{
-        postList,
-        createPost,
-        deletePost,
-        getPost,
+        loginInfo,
+        setLoginInfo,
       }}
     >
       {children}
