@@ -9,15 +9,15 @@ export function PostView({ post }: PostViewProps) {
   const { deletePost, loginUser } = useBlogContext();
   const navigate = useNavigate();
   return (
-    <div className="post">
+    <div className="PostView">
       <article>
         <h2>{post.title}</h2>
         <p>{post.content}</p>
       </article>
-      <div className="post__buttons">
+      <div className="PostView__buttons">
         {loginUser && (
           <button
-            className="post__delete"
+            className="PostView__delete"
             onClick={() => {
               deletePost(post.id);
               navigate("/post");

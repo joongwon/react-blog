@@ -1,19 +1,19 @@
-.post {
+.PostView {
   border: 1px solid grey;
   display: flex;
   padding: 10px;
   margin-bottom: 20px;
 }
 
-.post article {
+.PostView article {
   flex: 1;
 }
 
-.post__buttons {
+.PostView__buttons {
   margin-left: 10px;
 }
 
-.post__delete {
+.PostView__delete {
   border: none;
   background-color: unset;
   cursor: pointer;
