@@ -8,7 +8,7 @@ export type PostType = {
 
 type BlogContextType = {
   postList: PostType[];
-  createPost: (title: string, content: string) => void;
+  createPost: (title: string, content: string) => PostType;
   deletePost: (id: number) => void;
   getPost: (id: number) => PostType | null;
 };
@@ -41,6 +41,7 @@ export function BlogProvider({ children }: PropsWithChildren) {
       content,
     };
     setPostList([newPost, ...postList]);
+    return newPost;
   }
 
   function getPost(id: number) {

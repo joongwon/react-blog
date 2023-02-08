@@ -10,8 +10,8 @@ export function PostCreateForm() {
     <Formik
       initialValues={{ title: "", content: "" }}
       onSubmit={({ title, content }) => {
-        createPost(title, content);
-        navigate("/post");
+        const post = createPost(title, content);
+        navigate(`/post/${post.id}`);
       }}
       onReset={() => navigate("/post")}
     >
